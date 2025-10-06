@@ -1,0 +1,189 @@
+/* estilos/estiloDesktop.css
+   Objetivo: Layout general, tipografía, colores base, formularios y componentes.
+   Paleta (máx 3 colores): 
+     --color-primario: #005f73;
+     --color-secundario: #0a9396;
+     --color-acento: #94d2bd;
+   Neutros (permitidos): blanco/negro/grises para contraste.
+*/
+
+:root {
+  --color-primario: #005f73;
+  --color-secundario: #0a9396;
+  --color-acento: #94d2bd;
+  --color-texto: #0b0b0b;
+  --color-fondo: #f4f4f4;
+  --radio: 10px;
+  --sombra: 0 2px 10px rgba(0,0,0,.08);
+}
+
+/* Reset básico y tipografía */
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--color-texto);
+  background: var(--color-fondo);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Ubuntu, "Open Sans", Arial, sans-serif;
+  line-height: 1.5;
+}
+
+/* Contenedores y layout */
+main {
+  width: min(1100px, 92vw);
+  margin: 20px auto 80px;
+  padding: 0 10px;
+}
+
+section, article {
+  background: #fff;
+  margin: 16px 0;
+  padding: 18px;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+
+h1, h2, h3 {
+  line-height: 1.2;
+  margin: .2em 0 .4em;
+}
+h1 { font-size: clamp(1.6rem, 1.1rem + 2vw, 2.4rem); }
+h2 { font-size: clamp(1.2rem, 1rem + 1vw, 1.6rem); }
+h3 { font-size: clamp(1.05rem, .95rem + .6vw, 1.25rem); }
+
+/* Listas y tablas */
+ul, ol { padding-left: 1.1rem; }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: var(--radio);
+  overflow: hidden;
+  box-shadow: var(--sombra);
+}
+thead { background: var(--color-primario); color: #fff; }
+th, td { padding: 10px 12px; border-bottom: 1px solid #eaeaea; }
+tbody tr:hover { background: #fafafa; }
+
+/* Imágenes y media responsiva */
+img, video, iframe, audio { max-width: 100%; height: auto; }
+figure { margin: 0; }
+iframe { display: block; width: 100%; min-height: 320px; border: 0; }
+
+/* Enlaces */
+a { color: var(--color-secundario); text-decoration: none; }
+a:hover, a:focus { color: var(--color-primario); text-decoration: underline; outline: none; }
+
+/* Formularios */
+form {
+  background: #fff;
+  padding: 14px;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+}
+fieldset {
+  border: 1px solid #e0e0e0;
+  border-radius: var(--radio);
+  padding: 12px;
+  margin: 14px 0;
+}
+legend {
+  padding: 0 8px;
+  font-weight: 600;
+  color: var(--color-primario);
+}
+label { font-weight: 600; display: inline-block; margin: 8px 0 4px; }
+
+input[type="text"],
+input[type="tel"],
+input[type="date"],
+select,
+textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cfd8dc;
+  border-radius: 8px;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  background: #fff;
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: var(--color-secundario);
+  box-shadow: 0 0 0 3px rgba(10,147,150,.15);
+  outline: none;
+}
+
+textarea { resize: vertical; min-height: 120px; }
+
+button, input[type="submit"], input[type="reset"] {
+  appearance: none;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-right: 8px;
+}
+
+button[type="submit"], input[type="submit"] {
+  background: var(--color-primario);
+  color: #fff;
+}
+button[type="submit"]:hover, input[type="submit"]:hover {
+  filter: brightness(.95);
+}
+
+button[type="reset"], input[type="reset"] {
+  background: #e9ecef;
+  color: #333;
+}
+button[type="reset"]:hover, input[type="reset"]:hover {
+  background: #dee2e6;
+}
+
+/* Navegación interna secundaria (por ejemplo, en tema.html) */
+nav[aria-label] a {
+  display: inline-block;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  padding: 6px 10px;
+  margin: 6px 6px 0 0;
+  border-radius: 20px;
+}
+nav[aria-label] a:hover { background: var(--color-acento); color: #063; color: #00333e; }
+
+/* Utilidades */
+.card {
+  background: #fff;
+  border-radius: var(--radio);
+  box-shadow: var(--sombra);
+  padding: 16px;
+}
+.muted { color: #6b7280; }
+.center { text-align: center; }
+
+/* Responsivo */
+@media (max-width: 720px) {
+  main { margin: 12px auto 70px; }
+  header nav a { margin: 0 6px; }
+  th, td { padding: 8px 10px; }
+}
+
+nav[aria-label] a {
+  color: #00333e;               /* texto oscuro para máxima legibilidad */
+  background: #ffffff;          /* chip blanco sobre header oscuro */
+  border: 1px solid rgba(0,0,0,.08);
+}
+nav[aria-label] a:hover,
+nav[aria-label] a:focus {
+  background: var(--color-acento);
+  color: #00333e;
+  text-decoration: none;
+  outline: none;
+}
+
+/* Asegurar legibilidad de encabezados en todas las secciones */
+h2, h3 { color: #0b0b0b; }
+
+/* Enlaces visitados mantienen buen contraste */
+a:visited { color: #0b4a52; }
